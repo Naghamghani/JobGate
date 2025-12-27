@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* Global CSS Variables - JobGate Brand Colors */
+:root {
+  --primary-color: #2FA4A9;
+  --primary-hover: #258A8E;
+  --primary-light: #5BC0BE;
+  --primary-lighter: #AEE3E6;
+  --primary-bg: rgba(47, 164, 169, 0.1);
+  --primary-shadow: rgba(47, 164, 169, 0.3);
+  --primary-shadow-hover: rgba(47, 164, 169, 0.4);
+}
+
+
+@layer base {
+  body {
+    @apply bg-gray-100 text-gray-900 font-['Inter'];
+  }
+}
+
+@layer components {
+  .common-input {
+    @apply h-10 p-2.5 bg-white border border-gray-800 rounded text-gray-900 text-base outline-none w-full;
+  }
+
+  .common-input:focus {
+    border-color: var(--primary-color);
+  }
+
+  .common-textArea {
+    @apply p-2.5 bg-white border border-gray-800 rounded text-gray-900 text-base outline-none w-full resize-none;
+  }
+
+  .common-textArea:focus {
+    border-color: var(--primary-color);
+  }
+
+  /* Legacy LinkedIn button - Updated to JobGate colors */
+  .linkedin-btn {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border-radius: 9999px;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .linkedin-btn:hover {
+    background-color: var(--primary-hover);
+  }
+
+  .linkedin-btn:disabled {
+    background-color: var(--primary-color);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .linkedin-btn-outline {
+    @apply bg-white font-semibold rounded-full px-6 py-2 border transition-colors cursor-pointer;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .linkedin-btn-outline:hover {
+    background-color: var(--primary-bg);
+  }
+
+  /* JobGate Primary Button - Gradient Style */
+  .jobgate-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px var(--primary-shadow);
+  }
+
+  .jobgate-btn:hover {
+    background: linear-gradient(135deg, var(--primary-hover) 0%, #4AABAD 100%);
+    box-shadow: 0 6px 16px var(--primary-shadow-hover);
+    transform: translateY(-1px);
+  }
+
+  .jobgate-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px var(--primary-shadow);
+  }
+
+  .jobgate-btn:disabled {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* JobGate Outlined Button */
+  .jobgate-btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 10px 24px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .jobgate-btn-outline:hover {
+    background: var(--primary-bg);
+    border-color: var(--primary-hover);
+  }
+
+  .jobgate-btn-outline:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

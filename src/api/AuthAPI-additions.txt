@@ -1,0 +1,16 @@
+import { getAllUsersAPI, getAllCompanies } from '../../api/AuthAPI';
+
+// Add to AuthAPI.jsx
+export const getAllCompanies = async () => {
+  try {
+    const token = localStorage.getItem("authToken");
+    const response = await axios.get(`${API_URL}/companies`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};

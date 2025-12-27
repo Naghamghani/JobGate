@@ -1,0 +1,67 @@
+// Category API functions
+const CATEGORY_API_URL = "http://localhost:5000/api/categories";
+
+// Get all categories
+export const getAllCategories = async () => {
+  try {
+    const response = await axios.get(CATEGORY_API_URL);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
+
+// Get category by ID
+export const getCategoryById = async (categoryId) => {
+  try {
+    const response = await axios.get(`${CATEGORY_API_URL}/${categoryId}`);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
+
+// Create category (admin only)
+export const createCategory = async (categoryData) => {
+  try {
+    const token = localStorage.getItem("authToken");
+    const response = await axios.post(CATEGORY_API_URL, categoryData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
+
+// Update category (admin only)
+export const updateCategory = async (categoryId, categoryData) => {
+  try {
+    const token = localStorage.getItem("authToken");
+    const response = await axios.put(`${CATEGORY_API_URL}/${categoryId}`, categoryData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
+
+// Delete category (admin only)
+export const deleteCategory = async (categoryId) => {
+  try {
+    const token = localStorage.getItem("authToken");
+    const response = await axios.delete(`${CATEGORY_API_URL}/${categoryId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};
